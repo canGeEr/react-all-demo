@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Layout from './pages/layout/Layout';
-import Index from './pages/index/Index';
-import Component from './pages/component/Component';
+// import Layout from './pages/layout/Layout';
+// import Index from './pages/index/Index';
+// import Component from './pages/component/Component';
+import Index from '@/components/ScrollIngLoad/Index.jsx';
 
 function App() {
   return (
@@ -10,8 +11,6 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" component={Index} exact />
-          <Route path="/layout" component={Layout} />
-          <Route path="/component" component={Component} />
         </Switch>
       </Router>
     </div>
