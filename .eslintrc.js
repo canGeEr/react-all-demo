@@ -19,6 +19,11 @@ module.exports = {
     'react-hooks',
   ],
   rules: {
+    'no-console': 'off',
+    'no-unused-vars': 'off',
+    'no-restricted-syntax': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'react-hooks/rules-of-hooks': 'error', // 检查 Hook 的规则
     'react-hooks/exhaustive-deps': 'warn', // 检查 effect 的依赖
     'no-console': 'off',
@@ -28,5 +33,7 @@ module.exports = {
     'no-dupe-keys': 'off',
     'max-len': 'off',
     'no-unused-vars': 'off',
+    'func-names': 'off',
+    'no-undef': 'off',
   },
 };

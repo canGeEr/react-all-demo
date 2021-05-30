@@ -1,10 +1,23 @@
 import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
+import lockFun from '@/utils/lockFun.js';
+
+// 下拉滚动加载（无限滚动，列表的一直请求逻辑）
+/*
+  1. 确认期盼窗口容器 ScrollContainer 和 目标元素 showTarget
+  2. 获取他们之间的视觉距离 + 目标元素的高度，distance = showTarget.getBoundingClient().bottom - ScrollContainer.getBoundingClient().top
+  3. 获取窗口容器的 clientHeight，scrollTop
+  4. scrollTop + clientHeight > distance
+
+  拓展：
+    1. 锁闭包；用闭包实现锁，减少全局变量
+    2. 通过throttle，节流函数进行onSCroll性能优化
+*/
 
 let count = 0;
 
-let flag = true;
+let timerId = null;
 
 const Index = () => {
   const targetRef = useRef();
@@ -24,29 +37,33 @@ const Index = () => {
     add(10);
   }, []);
 
-  const onScroll = useCallback(() => {
+  const onScroll = useCallback(lockFun(({ isLock, setLock }) => {
     const parent = document.documentElement;
     const { scrollTop, clientHeight } = parent;
     const { top: parentTop } = parent.getBoundingClientRect();
     const target = targetRef.current;
-    const { bottom: targetBottom } = target.getBoundingClientRect();
-    if ((scrollTop + clientHeight) > (targetBottom - parentTop)) {
-      if (flag) {
-        console.log('请等待一秒');
-        setTimeout(() => {
-          add(10);
-          flag = true;
-        }, 1000);
-        flag = false;
+    if (target) {
+      const { bottom: targetBottom } = target.getBoundingClientRect();
+      if ((scrollTop + clientHeight) > (targetBottom - parentTop)) {
+        if (isLock()) {
+          console.log(`parent.scrollTop=${scrollTop + clientHeight} \ntarget.bottom=${targetBottom - parentTop}，触发异步请求更新，请等待一秒!`);
+          timerId = setTimeout(() => {
+            add(10);
+            setLock(true);
+          }, 1000);
+          setLock(false);
+        }
       }
     }
-    console.log(`parent.scrollTop=${scrollTop + clientHeight}, target.bottom=${targetBottom - parentTop}`);
-  }, []);
+  }, true), []);
 
   useEffect(() => {
+    console.log('执行了useEffect绑定');
     window.addEventListener('scroll', onScroll, false);
     return () => {
+      console.log('解除了useEffect绑定');
       window.removeEventListener('scroll', onScroll, false);
+      clearTimeout(timerId);
     };
   }, []);
 
@@ -80,5 +97,6 @@ const Index = () => {
     </div>
   );
 };
+// useEffect清除函数，需要清楚所有的副作用效果
 
 export default Index;
