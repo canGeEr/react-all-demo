@@ -35,7 +35,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'func-names': 'off',
     'react/prop-types': 'off',
-    'no-undef': 'off',
+    'no-shadow': 'off',
     'react/jsx-props-no-spreading': 'off',
   },
 };
