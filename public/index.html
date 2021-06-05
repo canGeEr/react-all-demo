@@ -39,5 +39,13 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <iframe src="./frame.html" width="400" height="400" frameborder="0" name="iframe"></iframe>
+
+    <script>
+      const frame = window.frames['iframe'];
+      window.addEventListener('load', function( ) {
+        frame.document.designMode = 'on'
+      })
+    </script>
   </body>
 </html>
