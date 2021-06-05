@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="//cdn.quilljs.com/1.2.2/quill.snow.css" rel="stylesheet">
+
+  <script src="/node_modules/quill-image-resize-module/image-resize.min.js"></script>
+</head>
+<body>
+  <h1>Quill Image Resize Module</h1>
+  <div id="editor" style="max-height:400px;overflow:auto">
+      <p>Click on the Image Below to resize</p>
+      <p><img src="http://ri-sandbox.s3.amazonaws.com/qulljs.png"></p>
+      <p>Some initial <strong>bold</strong> text</p>
+      <p><img src="http://ri-sandbox.s3.amazonaws.com/pi-rate.png"></p>
+  </div>
+  <p>Also see <a href="https://github.com/kensnyder/quill-image-drop-module">quill-image-drop-module</a>,
+a module that enables copy-paste and drag/drop for Quill.</p>
+<script>  
+var quill = new Quill('#editor', {
+    theme: 'snow',
+     modules: {
+        imageResize: {
+          displaySize: true
+        }
+    }
+});
+
+</script>
+</body>
+</html>

@@ -1,14 +1,19 @@
-// addWebpackAlias 更改别名项
-const { override, addWebpackAlias } = require('customize-cra');
-
-// 集成路径函数
+const { override, addWebpackAlias, addWebpackPlugin } = require('customize-cra');
+/* eslint import/no-extraneous-dependencies: 'off' */
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 
-const resolve = (dir) => path.join(__dirname, '.', dir);
+const resolve = (...args) => path.resolve(__dirname, ...args);
 
-// override 覆写函数
 module.exports = override(
   addWebpackAlias({
-    '@': resolve('src'),
+    '@': resolve('./src'),
   }),
+  (config) => {
+    if (process.env.NODE_ENV !== 'development') {
+      /* eslint no-param-reassign: 'off' */
+      config.plugins = [...config.plugins, new BundleAnalyzerPlugin()];
+    }
+    return config;
+  },
 );

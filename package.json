@@ -1,18 +1,35 @@
 {
-  "name": "base-react",
+  "name": "react-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.6.2",
+    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "antd": "^4.15.5",
+    "antd": "^4.16.0",
+    "axios": "^0.21.1",
+    "braft-editor": "^2.3.9",
+    "braft-extensions": "^0.1.1",
+    "ckeditor": "^4.12.1",
     "customize-cra": "^1.0.0",
+    "faker": "^5.5.3",
+    "http-proxy-middleware": "^2.0.0",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2",
+    "quill": "^2.0.0-dev.4",
+    "quill-better-table": "^1.2.10",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
+    "quill-image-uploader": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-virtualized": "^9.22.3",
+    "wangeditor": "^4.7.2",
+    "wangeditor-for-react": "^1.3.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -40,14 +57,16 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "react-app-rewired": "^2.1.8"
+    "react-app-rewire-css-modules": "^1.0.0",
+    "react-app-rewire-webpack-bundle-analyzer": "^1.1.0",
+    "react-app-rewired": "^2.1.8",
+    "typescript": "^4.3.2",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

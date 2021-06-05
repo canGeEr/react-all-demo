@@ -4,6 +4,6 @@ import App from './App';
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  React.createElement(React.StrictMode, null, React.createElement(App)),
+  <App />,
   document.getElementById('root'),
 );
