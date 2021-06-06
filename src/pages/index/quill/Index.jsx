@@ -3,6 +3,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import QuillBetterTable from 'quill-better-table';
 import ImageUploader from 'quill-image-uploader';
+import { func } from 'prop-types';
 import MyBolt from './MyBolt';
 // import ImageResize from 'quill-image-resize-module';
 // import axios from 'axios';
@@ -107,10 +108,13 @@ const Index = () => {
         // },
       },
     });
-    quill.clipboard.addMatcher(Node.TEXT_NODE, (node, delta) => console.log(node, delta));
+    quill.uploader.options.handler = function (range, files) {
+      console.log(range, files);
+    };
+    // quill.clipboard.addMatcher(Node.TEXT_NODE, (node, delta) => console.log(node, delta));
     editorRef.current = quill;
 
-    editorRef.current?.setContents(JSON.parse('{"ops":[{"insert":"1222222\\n"}]}'));
+    // editorRef.current?.setContents(JSON.parse('{"ops":[{"insert":"1222222\\n"}]}'));
   }, []);
   return (
     <>
